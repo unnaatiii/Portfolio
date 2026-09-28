@@ -1,90 +1,71 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Unnati Srivastav</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="./main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#c71920">
+  <title>Selected Work — Unnati Srivastav</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./main.css">
 </head>
-
-<body class="overflow-x-clip bg-[#e3d8c5]">
-    <nav class="flex items-center justify-between bg-[#6b1220] px-6 py-6 sm:px-10 lg:px-16">
-        <a href="./index.html" class="font-anton text-xl tracking-wide text-white sm:text-2xl">US</a>
-        <div class="flex gap-4 text-sm text-white sm:gap-8 lg:gap-14 sm:text-lg lg:text-xl">
-            <a href="./index.html#about" class="group relative inline-block font-caston text-white hover:text-black">About
-                <div class="absolute -bottom-2 left-0 h-1 w-full origin-left scale-x-0 rounded-full bg-black duration-300 group-hover:scale-x-100"></div>
-            </a>
-            <a href="./projects.html" class="group relative inline-block font-caston text-white hover:text-black">Projects
-                <div class="absolute -bottom-2 left-0 h-1 w-full origin-left scale-x-100 rounded-full bg-black"></div>
-            </a>
-            <a href="./index.html#contact" class="group relative inline-block font-caston text-white hover:text-black">Contact
-                <div class="absolute -bottom-2 left-0 h-1 w-full origin-left scale-x-0 rounded-full bg-black duration-300 group-hover:scale-x-100"></div>
-            </a>
-        </div>
+<body class="projects-page">
+  <header class="projects-top">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="wordmark" href="./index.html" aria-label="Unnati Srivastav, home">US<span>.</span></a>
+      <div class="nav-links">
+        <a href="./index.html#about">About</a><a href="./index.html#skills">Skills</a>
+        <a href="./index.html#contact">Contact</a><a href="./projects.html" aria-current="page">My Works <span class="nav-arrow">↗</span></a>
+      </div>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
     </nav>
-
-    <main class="px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
-        <p class="font-caston text-sm tracking-[0.35em] text-[#6b1220]">SELECTED WORK</p>
-        <h1 class="mt-3 font-anton text-6xl text-[#6b1220] sm:text-8xl">PROJECTS</h1>
-        <p class="mt-4 max-w-2xl font-caston text-lg text-black/70">Replace each card title, note, and link with your own project.</p>
-
-        <div class="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-            <!-- Project 1: change the href, title, and description -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="project-card group">
-                <p class="font-caston text-xs tracking-[0.3em] text-[#6b1220]/60">01</p>
-                <h2 class="mt-4 font-anton text-4xl text-[#6b1220]">Project One</h2>
-                <p class="mt-3 font-caston text-black/70">Short note about this project.</p>
-                <p class="mt-6 font-caston text-sm tracking-widest text-[#6b1220] transition group-hover:translate-x-1">VIEW</p>
-            </a>
-
-            <!-- Project 2 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="project-card group">
-                <p class="font-caston text-xs tracking-[0.3em] text-[#6b1220]/60">02</p>
-                <h2 class="mt-4 font-anton text-4xl text-[#6b1220]">Project Two</h2>
-                <p class="mt-3 font-caston text-black/70">Short note about this project.</p>
-                <p class="mt-6 font-caston text-sm tracking-widest text-[#6b1220] transition group-hover:translate-x-1">VIEW</p>
-            </a>
-
-            <!-- Project 3 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="project-card group">
-                <p class="font-caston text-xs tracking-[0.3em] text-[#6b1220]/60">03</p>
-                <h2 class="mt-4 font-anton text-4xl text-[#6b1220]">Project Three</h2>
-                <p class="mt-3 font-caston text-black/70">Short note about this project.</p>
-                <p class="mt-6 font-caston text-sm tracking-widest text-[#6b1220] transition group-hover:translate-x-1">VIEW</p>
-            </a>
-
-            <!-- Project 4 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="project-card group">
-                <p class="font-caston text-xs tracking-[0.3em] text-[#6b1220]/60">04</p>
-                <h2 class="mt-4 font-anton text-4xl text-[#6b1220]">Project Four</h2>
-                <p class="mt-3 font-caston text-black/70">Short note about this project.</p>
-                <p class="mt-6 font-caston text-sm tracking-widest text-[#6b1220] transition group-hover:translate-x-1">VIEW</p>
-            </a>
-
-            <!-- Project 5 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="project-card group">
-                <p class="font-caston text-xs tracking-[0.3em] text-[#6b1220]/60">05</p>
-                <h2 class="mt-4 font-anton text-4xl text-[#6b1220]">Project Five</h2>
-                <p class="mt-3 font-caston text-black/70">Short note about this project.</p>
-                <p class="mt-6 font-caston text-sm tracking-widest text-[#6b1220] transition group-hover:translate-x-1">VIEW</p>
-            </a>
-
-            <!-- Project 6 -->
-            <a href="#" target="_blank" rel="noopener noreferrer" class="project-card group">
-                <p class="font-caston text-xs tracking-[0.3em] text-[#6b1220]/60">06</p>
-                <h2 class="mt-4 font-anton text-4xl text-[#6b1220]">Project Six</h2>
-                <p class="mt-3 font-caston text-black/70">Short note about this project.</p>
-                <p class="mt-6 font-caston text-sm tracking-widest text-[#6b1220] transition group-hover:translate-x-1">VIEW</p>
-            </a>
-        </div>
-    </main>
+    <div class="projects-intro section-reveal is-visible">
+      <p class="section-kicker">A SELECTION OF THINGS I’VE MADE</p>
+      <h1>Selected<br><em>work.</em></h1>
+      <p class="projects-deck">Experiments, interfaces, and thoughtful solutions. Each project is a chance to make something clearer and more useful.</p>
+      <a href="#project-list" class="projects-scroll">SCROLL TO EXPLORE <span>↓</span></a>
+      <div class="projects-stamp" aria-hidden="true">US<br><span>PORTFOLIO</span></div>
+    </div>
+  </header>
+  <main class="projects-main" id="project-list">
+    <div class="projects-label"><span>SELECTED PROJECTS</span><span>01 — 06</span></div>
+    <div class="projects-grid">
+      <!-- For each project, update the link, category, title, description, and tags. -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="project-card project-card-red section-reveal">
+        <div class="card-topline"><span>01 / WEB EXPERIENCE</span><span class="card-arrow">↗</span></div>
+        <div class="card-art art-one" aria-hidden="true"><span class="art-ring"></span><span class="art-word">01</span></div>
+        <div class="card-copy"><h2>Project One</h2><p>A short description of the challenge, your approach, and what you created.</p><div class="card-tags"><span>DESIGN</span><span>DEVELOPMENT</span></div></div>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="project-card project-card-cream section-reveal">
+        <div class="card-topline"><span>02 / FRONTEND</span><span class="card-arrow">↗</span></div>
+        <div class="card-art art-two" aria-hidden="true"><span class="art-grid"></span><span class="art-word">02</span></div>
+        <div class="card-copy"><h2>Project Two</h2><p>A short description of the challenge, your approach, and what you created.</p><div class="card-tags"><span>UI</span><span>FRONTEND</span></div></div>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="project-card project-card-dark section-reveal">
+        <div class="card-topline"><span>03 / QUALITY</span><span class="card-arrow">↗</span></div>
+        <div class="card-art art-three" aria-hidden="true"><span class="art-orbit"></span><span class="art-word">03</span></div>
+        <div class="card-copy"><h2>Project Three</h2><p>A short description of the challenge, your approach, and what you created.</p><div class="card-tags"><span>QA</span><span>TESTING</span></div></div>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="project-card project-card-cream section-reveal">
+        <div class="card-topline"><span>04 / WEB EXPERIENCE</span><span class="card-arrow">↗</span></div>
+        <div class="card-art art-four" aria-hidden="true"><span class="art-sun"></span><span class="art-word">04</span></div>
+        <div class="card-copy"><h2>Project Four</h2><p>A short description of the challenge, your approach, and what you created.</p><div class="card-tags"><span>WEB</span><span>DESIGN</span></div></div>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="project-card project-card-dark section-reveal">
+        <div class="card-topline"><span>05 / FRONTEND</span><span class="card-arrow">↗</span></div>
+        <div class="card-art art-five" aria-hidden="true"><span class="art-ring"></span><span class="art-word">05</span></div>
+        <div class="card-copy"><h2>Project Five</h2><p>A short description of the challenge, your approach, and what you created.</p><div class="card-tags"><span>CODE</span><span>INTERACTION</span></div></div>
+      </a>
+      <a href="#" target="_blank" rel="noopener noreferrer" class="project-card project-card-red section-reveal">
+        <div class="card-topline"><span>06 / QUALITY</span><span class="card-arrow">↗</span></div>
+        <div class="card-art art-six" aria-hidden="true"><span class="art-grid"></span><span class="art-word">06</span></div>
+        <div class="card-copy"><h2>Project Six</h2><p>A short description of the challenge, your approach, and what you created.</p><div class="card-tags"><span>QA</span><span>PROCESS</span></div></div>
+      </a>
+    </div>
+    <section class="projects-contact"><p>HAVE A PROJECT IN MIND?</p><a href="./index.html#contact">Let’s talk <span>↗</span></a></section>
+  </main>
+  <footer class="projects-footer"><span>UNNATI SRIVASTAV © 2026</span><a href="./index.html">BACK TO HOME ↑</a></footer>
+  <script src="./main.js"></script>
 </body>
-
 </html>
