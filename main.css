@@ -1,3 +1,76 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hero-tilt {
+  perspective: 900px;
+}
+
+.hero-tilt-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.16s ease-out;
+  will-change: transform;
+}
+
+.hero-portrait {
+  display: block;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 78%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 78%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-composite: intersect;
+  filter: drop-shadow(18px 28px 35px rgba(0, 0, 0, 0.35));
+}
+
+.hero-shine {
+  pointer-events: none;
+  position: absolute;
+  inset: 8% 18% 18%;
+  border-radius: 40%;
+  opacity: 0;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle at var(--shine-x, 50%) var(--shine-y, 30%), rgba(255, 255, 255, 0.35), transparent 55%);
+  transition: opacity 0.2s ease;
+}
+
+.hero-tilt:hover .hero-shine {
+  opacity: 1;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise-in 0.8s ease forwards;
+}
+
+.reveal:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+@keyframes rise-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card {
+  @apply block border border-[#6b1220]/20 bg-[#efe6d6] p-8 transition duration-300;
+}
+
+.project-card:hover {
+  @apply -translate-y-1 border-[#6b1220] shadow-[0_18px_40px_rgba(107,18,32,0.12)];
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hero-tilt-inner,
+  .project-card {
+    animation: none;
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
