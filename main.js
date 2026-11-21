@@ -29,6 +29,30 @@ if ("IntersectionObserver" in window && !reducedMotion) {
   sections.forEach((section) => section.classList.add("is-visible"));
 }
 
+const progressBar = document.querySelector(".scroll-progress");
+const hero = document.querySelector(".hero");
+let scrollFrame;
+const updateScrollEffects = () => {
+  if (progressBar) {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.setProperty("--scroll-progress", `${scrollable > 0 ? window.scrollY / scrollable : 0}`);
+  }
+  if (hero && !reducedMotion) {
+    const shift = Math.min(window.scrollY, window.innerHeight) * -0.09;
+    hero.style.setProperty("--scroll-parallax", `${shift}px`);
+    hero.style.setProperty("--scroll-copy-parallax", `${shift * 0.45}px`);
+  }
+};
+window.addEventListener("scroll", () => {
+  if (!scrollFrame) {
+    scrollFrame = requestAnimationFrame(() => {
+      updateScrollEffects();
+      scrollFrame = null;
+    });
+  }
+}, { passive: true });
+updateScrollEffects();
+
 const portrait = document.querySelector(".portrait-wrap");
 if (portrait && !reducedMotion && window.matchMedia("(pointer: fine)").matches) {
   let frame;
@@ -38,14 +62,18 @@ if (portrait && !reducedMotion && window.matchMedia("(pointer: fine)").matches) 
     const y = (event.clientY - rect.top) / rect.height - 0.5;
     cancelAnimationFrame(frame);
     frame = requestAnimationFrame(() => {
-      portrait.style.setProperty("--tilt-x", `${-y * 2.5}deg`);
-      portrait.style.setProperty("--tilt-y", `${x * 3.5}deg`);
-      portrait.style.transform = `rotateX(${-y * 2.5}deg) rotateY(${x * 3.5}deg)`;
+      portrait.style.setProperty("--tilt-x", `${-y * 10}deg`);
+      portrait.style.setProperty("--tilt-y", `${x * 14}deg`);
+      portrait.style.transform = `rotateX(${-y * 10}deg) rotateY(${x * 14}deg)`;
+      portrait.style.setProperty("--light-x", `${x * 100 + 50}%`);
+      portrait.style.setProperty("--light-y", `${y * 100 + 50}%`);
     });
   });
   portrait.addEventListener("pointerleave", () => {
     portrait.style.setProperty("--tilt-x", "0deg");
     portrait.style.setProperty("--tilt-y", "0deg");
     portrait.style.transform = "rotateX(0deg) rotateY(0deg)";
+    portrait.style.setProperty("--light-x", "50%");
+    portrait.style.setProperty("--light-y", "40%");
   });
 }
