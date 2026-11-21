@@ -32,6 +32,48 @@
 @media(max-width:600px){.vlog-preview{padding:76px 8vw}.vlog-preview-layout{grid-template-columns:1fr;gap:32px}.vlog-preview h2{font-size:76px}.vlog-preview-link{min-height:190px;padding:22px}.vlog-hero{min-height:620px}.vlog-hero .nav{height:76px;padding:0 23px}.vlog-hero-copy{padding:74px 8vw 90px}.vlog-hero-copy .eyebrow{font-size:8px}.vlog-hero-copy h1{font-size:clamp(76px,16vw,105px)}.vlog-hero-deck,.vlog-hero-link{margin-left:4%;max-width:300px}.vlog-hero:after{width:340px;right:-30%;top:31%}.vlog-hero-note{left:8vw;right:auto;bottom:26px;font-size:7px}.vlog-stories{padding:76px 8vw}.vlog-section-heading{display:block;margin-bottom:35px}.vlog-section-heading h2{font-size:68px}.vlog-section-heading>p{margin-top:22px;font-size:13px}.vlog-entry-copy{grid-template-columns:1fr;gap:20px;padding:27px 0 23px}.vlog-entry-meta,.vlog-entry-footer{font-size:8px}.vlog-entry h3{font-size:39px}.vlog-entry-story p{font-size:13px}.vlog-footer{padding:20px 8vw;gap:15px;flex-wrap:wrap;font-size:8px}}
 .vlog-entry-video{display:block;width:100%;max-height:420px;object-fit:cover;margin:30px 0 0;background:#171111}
 
+/* Shared responsive safeguards for every page. */
+html{width:100%;max-width:100%;overflow-x:clip}
+img,video,svg{max-width:100%}
+img{height:auto}
+.about-grid>*,.about-details>*,.experience-intro>*,.experience-columns>*,.achievement-layout>*,.resume-layout>*,.skills-heading>*,.vlog-preview-layout>*,.vlog-section-heading>*,.vlog-entry-copy>*,.card-copy>*{min-width:0}
+.project-feature,.project-title,.projects-intro h1,.vlog-hero-copy h1{min-width:0;overflow-wrap:anywhere}
+.vlog-entry-story pre{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font:inherit;line-height:1.85;color:#594f4e;margin:0 0 20px}
+.vlog-entry-story img{display:block;width:100%;max-width:100%;height:auto;max-height:520px;object-fit:cover;margin-top:24px}
+.nav-links a,.text-link,.email-link,.projects-contact a{overflow-wrap:anywhere}
+
+@media(max-width:600px){
+  .hero{min-height:760px;min-height:max(760px,100svh)}
+  .hero-copy{left:7%;width:86%}
+  .line-light{font-size:clamp(64px,16vw,84px)}
+  .line-name{font-size:clamp(68px,18vw,94px);white-space:normal;overflow-wrap:anywhere}
+  .hero-stats div{padding-right:7px;padding-left:7px}
+  .hero-stats span{line-height:1.35}
+  .project-feature{min-width:0}
+  .project-title{max-width:74%;font-size:clamp(54px,14vw,82px);overflow-wrap:normal}
+  .project-orbit{max-width:38vw;max-height:38vw}
+  .work-heading{flex-wrap:wrap}
+  .projects-label{gap:12px;font-size:8px}
+  .card-copy{grid-template-columns:minmax(0,1fr)}
+  .card-copy h2{font-size:clamp(30px,9vw,36px);overflow-wrap:anywhere}
+  .card-tags{grid-column:1;grid-row:auto;justify-content:flex-start;max-width:none;margin-top:14px}
+  .projects-contact a{font-size:clamp(38px,12vw,49px)}
+  .vlog-hero{min-height:0;padding-bottom:86px}
+  .vlog-hero-copy{padding-top:58px;padding-bottom:35px}
+  .vlog-hero-copy h1{font-size:clamp(58px,15vw,88px);line-height:.88;overflow-wrap:normal}
+  .vlog-hero-deck,.vlog-hero-link{margin-left:0}
+  .vlog-hero-note{left:8vw;right:8vw;bottom:25px;justify-content:space-between;gap:10px}
+  .vlog-entry-meta,.vlog-entry-footer{align-items:flex-start;flex-wrap:wrap;letter-spacing:.1em}
+  .vlog-entry-story pre{font-size:13px;line-height:1.75}
+}
+@media(max-width:360px){
+  .hero-stats{left:5%;right:5%}
+  .hero-stats strong{font-size:9px}
+  .hero-stats span{font-size:7px}
+  .vlog-hero-copy h1{font-size:clamp(54px,14.5vw,64px)}
+  .projects-main{padding-right:5vw;padding-left:5vw}
+}
+
 /* Distinct section treatments: resume, skills, and vlog preview */
 .resume-section{background:#171111;color:#fff}.resume-section .section-kicker{color:#ffaaa3}.resume-layout h2{color:#fff}.resume-layout h2 em{color:#ff7773}.resume-layout>div:first-child>p{color:#d0c4c0}.resume-actions p{color:#b8aaa5}.resume-actions code{color:#f1ded8}.resume-button{background:#c91920}.resume-button:hover{background:#e12c33}
 .vlog-preview{background:var(--red);color:#fff}.vlog-preview .section-kicker{color:#ffd0c7}.vlog-preview h2{color:#fff}.vlog-preview h2 em{color:#210d0d}.vlog-preview-layout>div>p{color:#ffe3df}.vlog-preview-link{background:#f0e4dc;color:#171111}.vlog-preview-label{color:var(--red)}.vlog-preview-arrow,.vlog-preview-cta b{color:var(--red)}
@@ -39,3 +81,28 @@
 /* Keep the workplace journal distinct from the red contact footer */
 .vlog-preview{background:#dce6df;color:#171111}.vlog-preview .section-kicker{color:#85604f}.vlog-preview h2{color:#171111}.vlog-preview h2 em{color:var(--red)}.vlog-preview-layout>div>p{color:#4b5550}.vlog-preview-link{background:#fffaf4;color:#171111;border:1px solid #17111118}.vlog-preview-label{color:#7c5d50}.vlog-preview-arrow,.vlog-preview-cta b{color:var(--red)}
 
+/* Final responsive overrides apply consistently across all routes. */
+html{width:100%;max-width:100%;overflow-x:clip}
+img,video,svg{max-width:100%}
+.vlog-entry-story pre{max-width:100%;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font:inherit;line-height:1.85;color:#594f4e;margin:0 0 20px}
+.vlog-entry-story img{display:block;width:100%;max-width:100%;height:auto;max-height:520px;object-fit:cover;margin-top:24px}
+.about-grid>*,.about-details>*,.experience-intro>*,.experience-columns>*,.achievement-layout>*,.resume-layout>*,.skills-heading>*,.vlog-preview-layout>*,.vlog-section-heading>*,.vlog-entry-copy>*,.card-copy>*{min-width:0}
+@media(max-width:600px){
+  .hero{min-height:760px;min-height:max(760px,100svh)}.hero-copy{left:7%;width:86%}.line-light{font-size:clamp(64px,16vw,84px)}.line-name{font-size:clamp(68px,18vw,94px);white-space:normal;overflow-wrap:anywhere}
+  .hero-stats div{padding-right:7px;padding-left:7px}.hero-stats span{line-height:1.35}
+  .project-title{max-width:74%;font-size:clamp(54px,14vw,82px);overflow-wrap:normal}.project-orbit{max-width:38vw;max-height:38vw}.work-heading{flex-wrap:wrap}
+  .projects-label{gap:12px;font-size:8px}.card-copy{grid-template-columns:minmax(0,1fr)}.card-copy h2{font-size:clamp(30px,9vw,36px);overflow-wrap:anywhere}.card-tags{grid-column:1;grid-row:auto;justify-content:flex-start;max-width:none;margin-top:14px}.projects-contact a{font-size:clamp(38px,12vw,49px)}
+  .vlog-hero{min-height:0;padding-bottom:86px}.vlog-hero-copy{padding-top:58px;padding-bottom:35px}.vlog-hero-copy h1{font-size:clamp(58px,15vw,88px);line-height:.88;overflow-wrap:normal}.vlog-hero-deck,.vlog-hero-link{margin-left:0}.vlog-hero-note{left:8vw;right:8vw;bottom:25px;justify-content:space-between;gap:10px}
+  .vlog-entry-meta,.vlog-entry-footer{align-items:flex-start;flex-wrap:wrap;letter-spacing:.1em}.vlog-entry-story pre{font-size:13px;line-height:1.75}
+}
+@media(max-width:360px){.hero-stats{left:5%;right:5%}.hero-stats strong{font-size:9px}.hero-stats span{font-size:7px}.vlog-hero-copy h1{font-size:clamp(54px,14.5vw,64px)}.projects-main{padding-right:5vw;padding-left:5vw}}
+
+.founder-link {
+  color: grey;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.founder-link:hover {
+  color: #c91920;
+}
