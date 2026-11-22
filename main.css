@@ -97,6 +97,16 @@ img,video,svg{max-width:100%}
 }
 @media(max-width:360px){.hero-stats{left:5%;right:5%}.hero-stats strong{font-size:9px}.hero-stats span{font-size:7px}.vlog-hero-copy h1{font-size:clamp(54px,14.5vw,64px)}.projects-main{padding-right:5vw;padding-left:5vw}}
 
+/* GSAP controls section visibility and link hover colors globally. */
+.section-reveal:not(.project-card){transition:none}
+.hero .intro-reveal{animation:none}
+a{transition:color .25s ease}
+a:hover,a:focus-visible{color:var(--red)}
+.hero a:hover,.vlog-hero a:hover,.contact a:hover{color:#ffaaa3}
+.selected-work a:hover,.projects-footer a:hover,.vlog-footer a:hover{color:#ff7773}
+.project-card-red:hover,.project-card-dark:hover{color:#ffaaa3}
+.project-card-cream:hover{color:var(--red)}
+
 .founder-link {
   color: grey;
   text-decoration: none;
@@ -106,3 +116,14 @@ img,video,svg{max-width:100%}
 .founder-link:hover {
   color: #c91920;
 }
+
+.vlog-toggle{display:inline-flex;align-items:center;gap:12px;margin-top:24px;padding:10px 0;border:0;background:none;color:var(--red);font:700 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.vlog-entry-preview{max-width:480px;margin:18px 0 0;color:#594f4e;font-size:14px;line-height:1.75}
+.vlog-entry-side{min-width:0}
+.vlog-entry-media{display:block;width:100%;height:clamp(220px,28vw,360px);max-width:100%;object-fit:cover;margin:24px 0 0}
+.vlog-toggle:hover{color:var(--red-dark)}
+.vlog-toggle:focus-visible{outline:2px solid var(--red);outline-offset:5px}
+.vlog-chevron{width:10px;height:10px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-3px);transition:transform .25s ease}
+.vlog-toggle[aria-expanded="true"] .vlog-chevron{transform:rotate(225deg) translate(-2px,-1px)}
+.vlog-entry-story[hidden]{display:none}
+@media(max-width:600px){.vlog-toggle{margin-top:15px}.vlog-entry-preview{margin-top:14px;font-size:13px;line-height:1.7}}
