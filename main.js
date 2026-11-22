@@ -43,6 +43,116 @@ document.querySelectorAll(".vlog-toggle").forEach((toggle) => {
   });
 });
 
+const resumeButton = document.querySelector(".resume-button");
+if (resumeButton && window.gsap && !reducedMotion) {
+  let activeMagicScene;
+  let activeMagicTimeline;
+
+  resumeButton.addEventListener("click", () => {
+    activeMagicTimeline?.kill();
+    activeMagicScene?.remove();
+
+    const scene = document.createElement("div");
+    scene.className = "resume-magic-scene";
+    scene.setAttribute("aria-hidden", "true");
+    document.body.appendChild(scene);
+    activeMagicScene = scene;
+
+    const buttonBox = resumeButton.getBoundingClientRect();
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const startX = buttonBox.left + buttonBox.width / 2;
+    const startY = buttonBox.top + buttonBox.height / 2;
+    const swirlTurns = 2.6;
+    const swirlRadius = Math.min(118, Math.max(44, width * 0.085));
+    const edgePad = Math.min(200, Math.max(120, width * 0.28));
+    const endX = Math.min(width - edgePad, Math.max(edgePad, startX + width * 0.14));
+    const endY = 34;
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    svg.setAttribute("preserveAspectRatio", "none");
+    svg.classList.add("resume-magic-trail");
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    const spiralPoints = [`M ${startX} ${startY}`];
+    for (let i = 1; i <= 220; i += 1) {
+      const progress = i / 220;
+      const radius = swirlRadius * Math.sin(Math.PI * progress);
+      const angle = Math.PI * 2 * swirlTurns * progress;
+      const x = startX + (endX - startX) * progress + Math.cos(angle) * radius;
+      const y = startY + (endY - startY) * progress;
+      spiralPoints.push(`L ${x.toFixed(2)} ${y.toFixed(2)}`);
+    }
+    path.setAttribute("d", spiralPoints.join(" "));
+    svg.appendChild(path);
+    scene.appendChild(svg);
+
+    const card = document.createElement("div");
+    card.className = "resume-float-card";
+    card.innerHTML = '<div class="resume-card-top"><b>US<span>.</span></b><i>01 / 01</i></div><div class="resume-card-seal">✦</div><p>UNNATI SRIVASTAV</p><strong>MY RESUME</strong><div class="resume-card-lines"><i></i><i></i><i></i></div><small>QUALITY · FRONTEND</small>';
+    scene.appendChild(card);
+
+    const pathLength = path.getTotalLength();
+    path.style.strokeDasharray = pathLength;
+    path.style.strokeDashoffset = pathLength;
+    const sparkleCount = 17;
+    for (let i = 0; i < sparkleCount; i += 1) {
+      const point = path.getPointAtLength((pathLength * (i + 1)) / (sparkleCount + 1));
+      const sparkle = document.createElement("span");
+      sparkle.className = `resume-card-sparkle${i % 3 === 0 ? " is-rose" : ""}`;
+      sparkle.textContent = i % 4 === 0 ? "✧" : "✦";
+      sparkle.style.left = `${point.x}px`;
+      sparkle.style.top = `${point.y}px`;
+      scene.appendChild(sparkle);
+      gsap.fromTo(sparkle, { autoAlpha: 0, scale: 0, y: 0 }, {
+        autoAlpha: 1, scale: 1, y: -19, duration: 0.35, delay: i * 0.075,
+        yoyo: true, repeat: 1, ease: "back.out(2)"
+      });
+    }
+
+    const motion = { progress: 0 };
+    const updateCard = () => {
+      const progress = motion.progress;
+      const pointOnTrail = path.getPointAtLength(pathLength * progress);
+      const scale = progress < 0.2 ? 0.38 + progress * 3.1 : 1 - ((progress - 0.2) / 0.8) * 0.42;
+      const opacity = progress < 0.07 ? progress / 0.07 : progress > 0.76 ? Math.max(0, (1 - progress) / 0.24) : 1;
+      gsap.set(card, {
+        x: pointOnTrail.x - card.offsetWidth / 2,
+        y: pointOnTrail.y - card.offsetHeight / 2,
+        rotation: Math.sin(progress * Math.PI * 2 * swirlTurns) * 13,
+        scale,
+        autoAlpha: opacity
+      });
+    };
+
+    updateCard();
+    gsap.fromTo(resumeButton, { scale: 1 }, {
+      scale: 1.045, duration: 0.22, yoyo: true, repeat: 1, ease: "power2.out",
+      transformOrigin: "50% 50%"
+    });
+    activeMagicTimeline = gsap.timeline({
+      onComplete: () => {
+        scene.remove();
+        if (activeMagicScene === scene) activeMagicScene = null;
+      }
+    });
+    activeMagicTimeline.to(motion, {
+      progress: 1, duration: 2.05, ease: "power1.inOut", onUpdate: updateCard
+    }, 0);
+    activeMagicTimeline.to(path, {
+      strokeDashoffset: 0, duration: 1.8, ease: "power1.inOut"
+    }, 0);
+    activeMagicTimeline.to(path, {
+      opacity: 0, duration: 0.45, ease: "power1.out"
+    }, 1.5);
+    activeMagicTimeline.fromTo(card, {
+      filter: "drop-shadow(0 12px 18px rgba(255, 189, 98, .15))"
+    }, {
+      filter: "drop-shadow(0 18px 28px rgba(255, 189, 98, .55))",
+      duration: 0.45, yoyo: true, repeat: 2, ease: "sine.inOut"
+    }, 0.1);
+  });
+}
+
 const sections = document.querySelectorAll(".section-reveal");
 const gsapTargets = document.querySelectorAll(
   ".section-reveal, .vlog-entry, .projects-main, .projects-contact, .projects-footer, .vlog-hero-copy, .vlog-footer"
