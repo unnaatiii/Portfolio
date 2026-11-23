@@ -14,28 +14,28 @@ if (menuButton && navLinks) {
   }));
 }
 
-document.querySelectorAll(".vlog-toggle").forEach((toggle) => {
+document.querySelectorAll(".vlog-entry-trigger").forEach((toggle) => {
   const panel = document.getElementById(toggle.getAttribute("aria-controls"));
-  const label = toggle.querySelector("span");
+  const label = toggle.querySelector(".vlog-toggle-text");
   if (!panel) return;
 
   toggle.addEventListener("click", () => {
     const isOpening = toggle.getAttribute("aria-expanded") !== "true";
     toggle.setAttribute("aria-expanded", String(isOpening));
-    if (label) label.textContent = isOpening ? "Close story" : "Read story";
+    if (label) label.textContent = isOpening ? "Close story" : "Read full story";
 
     if (isOpening) {
       panel.hidden = false;
       if (window.gsap && !reducedMotion) {
-        gsap.fromTo(panel, { height: 0, autoAlpha: 0 }, {
+        window.gsap.fromTo(panel, { height: 0, autoAlpha: 0 }, {
           height: "auto", autoAlpha: 1, duration: 0.5, ease: "power2.out",
           clearProps: "height"
         });
       }
     } else if (window.gsap && !reducedMotion) {
-      gsap.to(panel, {
+      window.gsap.to(panel, {
         height: 0, autoAlpha: 0, duration: 0.35, ease: "power2.in",
-        onComplete: () => { panel.hidden = true; gsap.set(panel, { clearProps: "all" }); }
+        onComplete: () => { panel.hidden = true; window.gsap.set(panel, { clearProps: "all" }); }
       });
     } else {
       panel.hidden = true;
@@ -43,6 +43,9 @@ document.querySelectorAll(".vlog-toggle").forEach((toggle) => {
   });
 });
 
+const initializeGsapEffects = () => {
+  const gsap = window.gsap;
+  const ScrollTrigger = window.ScrollTrigger;
 const resumeButton = document.querySelector(".resume-button");
 if (resumeButton && window.gsap && !reducedMotion) {
   let activeMagicScene;
@@ -223,6 +226,10 @@ if (window.gsap && window.ScrollTrigger) {
   sections.forEach((section) => section.classList.add("is-visible"));
   gsapTargets.forEach((target) => target.classList.add("is-visible"));
 }
+};
+
+if (document.readyState === "complete") initializeGsapEffects();
+else document.addEventListener("DOMContentLoaded", initializeGsapEffects, { once: true });
 
 const progressBar = document.querySelector(".scroll-progress");
 const hero = document.querySelector(".hero");
